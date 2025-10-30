@@ -1,0 +1,105 @@
+.message-list-scroll {
+  height: 70vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 767.98px) {
+  .sticky-form-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    z-index: 1030;
+  }
+
+  .message-list-card-body {
+    padding-bottom: 100px;
+  }
+}
+
+.min-h-0 {
+  min-height: 0;
+}
+
+/* Avatar Styles */
+.avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.avatar-initial {
+  text-transform: uppercase;
+}
+
+/* Message Bubble Styles */
+.message-bubble {
+  max-width: 75%;
+  padding: 10px 15px;
+  border-radius: 1.1rem;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.message-bubble.received {
+  background-color: var(--bg-component-lighter);
+  color: var(--text-color);
+  border-bottom-left-radius: 0.3rem;
+}
+
+.message-bubble.sent {
+  background-color: var(--accent-color);
+  color: #000; /* Black text for accent color background */
+  border-bottom-right-radius: 0.3rem;
+}
+
+.message-item {
+  align-items: flex-start;
+}
+
+.message-username {
+  font-size: 0.85rem;
+  color: var(--text-muted-color);
+}
+
+.message-bubble.sent .message-username {
+  color: rgba(0, 0, 0, 0.6); /* Darker text for username on accent background */
+}
+
+.message-list-container {
+  padding: 1rem;
+}
+
+/* Adjust card-body padding for message list */
+.message-list-card-body {
+  padding: 0 !important; /* Remove default padding to allow message-list-container to control it */
+}
+
+/* User List Item */
+.list-group-item {
+  background-color: var(--bg-component);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: var(--bs-border-radius);
+  border-top-right-radius: var(--bs-border-radius);
+}
+
+.list-group-item:last-child {
+  border-bottom-left-radius: var(--bs-border-radius);
+  border-bottom-right-radius: var(--bs-border-radius);
+}
+
+.list-group-item + .list-group-item {
+  border-top-width: 0;
+}
