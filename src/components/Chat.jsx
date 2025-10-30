@@ -15,11 +15,6 @@ const Chat = () => {
   const [typingUsers, setTypingUsers] = useState([]);
 
   useEffect(() => {
-    // Cargar mensajes iniciales
-    getMessages()
-      .then(setMessages)
-      .catch(err => console.error("Failed to fetch messages:", err));
-
     // Escuchar nuevos mensajes
     socket.on('server:new_message', (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
@@ -42,9 +37,15 @@ const Chat = () => {
     };
   }, []);
 
-  const handleLoginSuccess = (loggedInUser) => {
+  const handleLoginSuccess = async (loggedInUser) => {
     setUser(loggedInUser);
     socket.emit('client:user_joined', loggedInUser);
+    try {
+      const initialMessages = await getMessages();
+      setMessages(initialMessages);
+    } catch (err) {
+      console.error("Failed to fetch initial messages after login:", err);
+    }
   };
 
   const handleSendMessage = (content) => {
